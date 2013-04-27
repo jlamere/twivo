@@ -27,7 +27,7 @@ function filtertweets() {
         tweet = tweets[i].innerHTML;
         for (var j = 0; j < hide.length; j++){
       	  if (tweet.contains(hide[j])) {
-      	  	 lockBox.push(hide[j]);
+      	  	 lockBox.push(tweets[i]);
 			 kills.push(tweets[i]);
        		 }
    	 }

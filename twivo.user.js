@@ -5,10 +5,10 @@
 // @include     http://twitter.com/*
 // @version     1.0.0
 // ==/UserScript==
-var v;
+
 var hide = new Array();
 var lockBox = new Array();
-va timeout = null;
+var timeout = null;
 if (!String.prototype.contains) {
 	String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
@@ -16,22 +16,24 @@ if (!String.prototype.contains) {
 }
 function addArray(){
 
-	hide.push("day");
-	hide.push("job");
+	hide.push("Miss")
+	hide.push("humbled")
 }
 function filtertweets() {
-	 tweets = document.getElementsByClassName("tweet");
-     kills = [];
+	var tweets = document.getElementsByClassName("tweet");
+    var kills = [];
+
 	for (var i = 0; i < tweets.length; i++) {
-        var tweet = tweets[i].innerHTML;
+        tweet = tweets[i].innerHTML;
         for (var j = 0; j < hide.length; j++){
-      	  if (tweet.contains(hide[j])) {
+      	  if (tweet.contains(hide[j]) && !(tweets.hidden)) {
+      	  	 tweets[i].hidden = true;
       	  	 lockBox.push(tweets[i]);
-      	  	// tweets[i].hidden = true;
 			 kills.push(tweets[i]);
        		 }
-   		 }
+   	 }
     }
+    console.log(kills);
     
 	for (var i = 0; i < kills.length; i++) { 
 		kills[i].style.display = "none";
@@ -41,10 +43,16 @@ function recordMode(){
 	if(timeout == null){
 	 timeout = setTimeout(filtertweets, 100);
 	 }
-}
+}	
 function stopRecordMode(){
 	clearTimeout(timeout);
 	timeout = null;
 }
 addArray();
-recordMode();
+
+setTimeout(filtertweets, 100);
+
+
+
+
+

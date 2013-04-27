@@ -23,32 +23,25 @@ if (!String.prototype.contains) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
     };
 }
-function pushArray(){
 
-    hide.push("Music");
-    hide.push("Miami");
-}
 function filtertweets() {
 
     var startTime = 0;
     var tweets = document.getElementsByClassName("tweet");
     for (var i = 0; i < tweets.length; i++) {
-        tweet = tweets[i].innerHTML;
+       var tweet = tweets[i].innerHTML;
         for (var j = 0; j < hide.length; j++){
-          if (tweet.contains(hide[j]) && !(tweets.hidden)) {
-             tweets[i].hidden = true;
-             
-             }
-             lockBox.push(tweets[i]);
-             kills.push(tweets[i]);
+          if (tweet.contains(hide[j])) {
+             var parent = $(tweets[i]).parent();
+             kills.push(parent);
+             parent.detach();
+
              }
         }
     }
-    console.log(kills);
+
     
-    for (var i = 0; i < kills.length; i++) { 
-        kills[i].style.display = "none";
-    }
+ }
 
 function recordMode(){
     if(timeout == null){
@@ -61,17 +54,24 @@ function stopRecordMode(){
 }
 
 function addTwivoButton() {
+    
     var actions = $("#global-actions");
+    var input = $("<input type='text' id='tag'>");
+    var litext = $("<li class = 'new'>");
     var li = $("<li class='new'>");
     button = $("<button id='record' class='btn btn-primary'>");
     button.text('Record');
     li.append(button);
+    litext.append(input);
     actions.append(li);
+    actions.append(litext);
     button.click(clicked);
 } 
 function clicked(){
     if (button.text() == 'Record'){
-
+         var tag = $("#tag").val();
+         alert(" oeo " + tag);
+         hide.push(tag);
          button.text('Stop');
          recordMode();
     }
@@ -81,21 +81,22 @@ function clicked(){
     }
     else if (button.text() == 'Play'){
          button.text('Record');
+         hide = [];
          play();
     }
     
 } 
 
-    function play(){
-    for (var i = 0; i < kills.length; i++) { 
-        kills[i].style.display = 'inline';
+ function play(){
+     var ol = $("#stream-items-id");
+     for (var i = kills.length-1; i >=0 ; i--) { 
+         ol.prepend(kills[i]);
         
     }
 }
 
 
     addTwivoButton();
-    pushArray();
     
 }
 

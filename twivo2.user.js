@@ -33,8 +33,10 @@ function filtertweets() {
         for (var j = 0; j < hide.length; j++){
           if (tweet.contains(hide[j])) {
              var parent = $(tweets[i]).parent();
-             kills.push(parent);
-             parent.detach();
+             kills.push(parent.clone());
+             $(tweets[i]).css("background-color", "#A7D63A");
+              $(tweets[i]).css("color", "#A7D63A");
+
 
              }
         }
@@ -45,7 +47,8 @@ function filtertweets() {
 
 function recordMode(){
     if(timeout == null){
-     timeout = setTimeout(filtertweets, 100);
+
+     timeout = setInterval(filtertweets, 500);
      }
 }   
 function stopRecordMode(){
@@ -69,8 +72,8 @@ function addTwivoButton() {
 } 
 function clicked(){
     if (button.text() == 'Record'){
+         hide = [];
          var tag = $("#tag").val();
-         alert(" oeo " + tag);
          hide.push(tag);
          button.text('Stop');
          recordMode();
@@ -90,6 +93,7 @@ function clicked(){
  function play(){
      var ol = $("#stream-items-id");
      for (var i = kills.length-1; i >=0 ; i--) { 
+         kills[i].css('background-color', '#FAD860');
          ol.prepend(kills[i]);
         
     }

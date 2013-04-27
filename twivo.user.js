@@ -48,10 +48,13 @@ function stopRecordMode(){
 	clearTimeout(timeout);
 	timeout = null;
 }
+function replay(){
+	for (var i = 0; i < kills.length; i++) { 
+		kills[i].style.display = lockBox[i];
+}
 addArray();
 
-setTimeout(filtertweets, 100);
-
+recordMode();
 
 
 

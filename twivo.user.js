@@ -7,6 +7,7 @@
 // ==/UserScript==
 
 var hide = new Array();
+var lockBox = new Array();
 if (!String.prototype.contains) {
 	String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
@@ -26,6 +27,7 @@ function filtertweets() {
         tweet = tweets[i].innerHTML;
         for (var j = 0; j < hide.length; j++){
       	  if (tweet.contains(hide[j])) {
+      	  	 lockBox.push(hide[j]);
 			 kills.push(tweets[i]);
        		 }
    	 }
@@ -36,5 +38,6 @@ function filtertweets() {
 		kills[i].style.display = "none";
 	}
 }
+
 
 setTimeout(filtertweets, 100);

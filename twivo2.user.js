@@ -29,32 +29,21 @@ function filtertweets() {
     var startTime = 0;
     var tweets = document.getElementsByClassName("tweet");
     for (var i = 0; i < tweets.length; i++) {
-         var tweetContain = tweets[i];
-         var tweet = tweets[i].innerHTML;
-         if(tweetContain.hidden){
-            continue; 
-         }
+       var tweet = tweets[i].innerHTML;
         for (var j = 0; j < hide.length; j++){
           if (tweet.contains(hide[j])) {
-            tweetContain.hidden = true;
              var parent = $(tweets[i]).parent();
-             
-             //  var time = $("#clients-and-actions.meta");
-             // alert("test" + time);
-            
              kills.push(parent.clone());
              $(tweets[i]).css("background-color", "#A7D63A");
               $(tweets[i]).css("color", "#A7D63A");
 
-
-              }
 
              }
         }
     }
 
     
- 
+ }
 
 function recordMode(){
     if(timeout == null){
@@ -74,7 +63,6 @@ function addTwivoButton() {
     var litext = $("<li class = 'new'>");
     var li = $("<li class='new'>");
     button = $("<button id='record' class='btn btn-primary'>");
-
     button.text('Record');
     li.append(button);
     litext.append(input);
@@ -106,11 +94,9 @@ function clicked(){
      var ol = $("#stream-items-id");
      for (var i = kills.length-1; i >=0 ; i--) { 
          kills[i].css('background-color', '#FAD860');
-         
          ol.prepend(kills[i]);
         
-           
-     }
+    }
 }
 
 

@@ -44,8 +44,13 @@ function filtertweets() {
              if (tweet.contains(hide[j])) {
                  tweetContainer.twivoHide = true;
                  var parent = $(tweets[i]).parent();
-                  kills.push(parent.clone());
+                 var user = $(tweets[i]).attr("data-user-id");
                   
+                 if(user == celeb[0]){
+                     $(tweets[i]).css("font-size", "25px");
+                      }
+                  kills.push(parent.clone());
+                 
                  $(tweets[i]).css("background-color", "#A7D63A");
                 
                  $(tweets[i]).css("color", "#A7D63A");
@@ -113,10 +118,7 @@ function clicked(){
      var count = 1;
 
      for (var i = kills.length-1; i >=0 ; i--) { 
-         var user = $(kills[i]).attr("data-user-id");
-          if(user = celeb[0]){
-             $(kills[i]).css("font-size", "25px");
-             }
+        
          killIt(kills[i], ol, count*1000); 
          count += 2;
     }

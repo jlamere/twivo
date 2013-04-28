@@ -96,11 +96,7 @@ function clicked(){
     if (button.text() == 'Record'){
          hide = [];
          var tag = $("#tag").val();
-         var splitter = tag.split(",");
-
-         for(var i = 0; i < splitter.length; i++){
-            hide.push(splitter[i]);
-         }
+         hide.push(tag);
          button.text('Stop');
          recordMode();
     }

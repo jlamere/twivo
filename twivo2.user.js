@@ -17,13 +17,24 @@ var hide = new Array();
 var lockBox = new Array();
 var timeout = null;
 var kills = new Array ();
+var celeb = new Array();
 var button;
 if (!String.prototype.contains) {
     String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
     };
 }
+function klout(){
+celeb[0] = 574726427; // Dance Moms
+celeb[0].klout = 75998252051241835;
+celeb[0].bucket = "80-89";
+celeb[0].font = 40;
+celeb[1] = 357839393; // Abby
+celeb[1].klout = 36873226715297013;
+celeb[1].bucket = "60-69";
+celeb[1].font = 30;
 
+}
 function filtertweets() {
 
     var startTime = 0;
@@ -38,9 +49,15 @@ function filtertweets() {
              if (tweet.contains(hide[j])) {
              tweetContainer.twivoHide = true;
              var parent = $(tweets[i]).parent();
+             var user = $("#data-user-id");
+             if(user == celeb[0]){
+                $(tweets[i]).css("font-size", "40px;");
+
+             }
              kills.push(parent.clone());
              $(tweets[i]).css("background-color", "#A7D63A");
              $(tweets[i]).css("color", "#A7D63A");
+
 
 
              }
@@ -79,7 +96,11 @@ function clicked(){
     if (button.text() == 'Record'){
          hide = [];
          var tag = $("#tag").val();
-         hide.push(tag);
+         var splitter = tag.split(",");
+
+         for(var i = 0; i < splitter.length; i++){
+            hide.push(splitter[i]);
+         }
          button.text('Stop');
          recordMode();
     }
@@ -97,12 +118,20 @@ function clicked(){
 
  function play(){
      var ol = $("#stream-items-id");
+     var count = 1;
      for (var i = kills.length-1; i >=0 ; i--) { 
-         kills[i].css('background-color', '#FAD860');
-         ol.prepend(kills[i]);
-        
+        killIt(kills[i], ol, count*1000); 
+        count += 2;
     }
 }
+function killIt(tweet, list, delay){
+    setTimeout(function(){
+        tweet.css('background-color', '#FAD860');
+    list.prepend(tweet);
+    },delay);
+
+}
+
 
 
     addTwivoButton();

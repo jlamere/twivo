@@ -8,7 +8,8 @@
 
 var hide = new Array();
 var lockBox = new Array();
-var timeout = null;
+//var timeout = null;
+var kills = new Array ();
 if (!String.prototype.contains) {
 	String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
@@ -16,18 +17,18 @@ if (!String.prototype.contains) {
 }
 function addArray(){
 
-	hide.push("Miss")
-	hide.push("humbled")
+	hide.push("fan");
+	hide.push("super");
 }
 function filtertweets() {
 	var tweets = document.getElementsByClassName("tweet");
-    var kills = [];
 
 	for (var i = 0; i < tweets.length; i++) {
         tweet = tweets[i].innerHTML;
         for (var j = 0; j < hide.length; j++){
       	  if (tweet.contains(hide[j]) && !(tweets.hidden)) {
       	  	 tweets[i].hidden = true;
+      	  //	 tweets[i].timestamp = new Date().getTime();
       	  	 lockBox.push(tweets[i]);
 			 kills.push(tweets[i]);
        		 }
@@ -48,10 +49,7 @@ function stopRecordMode(){
 	clearTimeout(timeout);
 	timeout = null;
 }
-function replay(){
-	for (var i = 0; i < kills.length; i++) { 
-		kills[i].style.display = lockBox[i];
-}
+
 addArray();
 
 recordMode();

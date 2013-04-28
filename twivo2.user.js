@@ -17,6 +17,13 @@ var hide = new Array();
 var timeout = null;
 var kills = new Array ();
 var button;
+var celeb = new Array();
+
+function klout(){
+celeb[0] = 574726427; // Dance Moms
+celeb[0].klout = 75998252051241835;
+celeb[0].bucket = "80-89";
+}
 if (!String.prototype.contains) {
     String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
@@ -24,10 +31,12 @@ if (!String.prototype.contains) {
 }
 
 function filtertweets() {
-
+    klout();
     var tweets = document.getElementsByClassName("tweet");
     for (var i = 0; i < tweets.length; i++) {
          var tweetContainer = tweets[i];
+         var user = $(tweetContainer).attr("data-user-id");
+         alert(user);
          var tweet = tweets[i].innerHTML;
          for (var j = 0; j < hide.length; j++){
             if(tweetContainer.twivoHide == true){
@@ -37,7 +46,13 @@ function filtertweets() {
                  tweetContainer.twivoHide = true;
                  var parent = $(tweets[i]).parent();
                   kills.push(parent.clone());
+                  if(user != celeb[0]){
                  $(tweets[i]).css("background-color", "#A7D63A");
+                 } 
+                 else{
+                 $(tweets[i]).css("font-size", "30px");
+
+                 } 
                  $(tweets[i]).css("color", "#A7D63A");
 
 

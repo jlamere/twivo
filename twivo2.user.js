@@ -80,7 +80,11 @@ function clicked(){
     if (button.text() == 'Record'){
          hide = [];
          var tag = $("#tag").val();
-         hide.push(tag);
+         var splitter = tag.split(",");
+
+        for(var i = 0; i < splitter.length; i++){
+           hide.push(splitter[i]);
+            }
          button.text('Stop');
          recordMode();
     }

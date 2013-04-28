@@ -14,7 +14,6 @@ if (window.top != window.self)  //-- Don't run on frames or iframes.
 function scriptMain () {
 
 var hide = new Array();
-var lockBox = new Array();
 var timeout = null;
 var kills = new Array ();
 var button;
@@ -26,7 +25,6 @@ if (!String.prototype.contains) {
 
 function filtertweets() {
 
-    var startTime = 0;
     var tweets = document.getElementsByClassName("tweet");
     for (var i = 0; i < tweets.length; i++) {
          var tweetContainer = tweets[i];
@@ -36,19 +34,17 @@ function filtertweets() {
                 continue;
             }
              if (tweet.contains(hide[j])) {
-             tweetContainer.twivoHide = true;
-             var parent = $(tweets[i]).parent();
-             kills.push(parent.clone());
-             $(tweets[i]).css("background-color", "#A7D63A");
-             $(tweets[i]).css("color", "#A7D63A");
+                 tweetContainer.twivoHide = true;
+                 var parent = $(tweets[i]).parent();
+                  kills.push(parent.clone());
+                 $(tweets[i]).css("background-color", "#A7D63A");
+                 $(tweets[i]).css("color", "#A7D63A");
 
 
 
              }
-        }
-    }
-
-    
+         }
+     }  
  }
 
 function recordMode(){
@@ -81,7 +77,6 @@ function clicked(){
          hide = [];
          var tag = $("#tag").val();
          var splitter = tag.split(",");
-
         for(var i = 0; i < splitter.length; i++){
            hide.push(splitter[i]);
             }
@@ -96,6 +91,9 @@ function clicked(){
          button.text('Record');
          hide = [];
          play();
+         kills = []
+
+
     }
     
 } 
@@ -104,23 +102,19 @@ function clicked(){
      var ol = $("#stream-items-id");
      var count = 1;
      for (var i = kills.length-1; i >=0 ; i--) { 
-        killIt(kills[i], ol, count*1000); 
-        count += 2;
+         killIt(kills[i], ol, count*1000); 
+         count += 2;
     }
 }
 function killIt(tweet, list, delay){
-    setTimeout(function(){
-        tweet.css('background-color', '#FAD860');
-    list.prepend(tweet);
-    },delay);
+     setTimeout(function(){
+         tweet.css('background-color', '#FAD860');
+          list.prepend(tweet);
+      },delay);
 
-}
-
-
-
-    addTwivoButton();
-    
-}
+     }
+     addTwivoButton();    
+ }
 
 window.addEventListener ("load", scriptMainLoader, false);
 

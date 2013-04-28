@@ -29,18 +29,13 @@ function filtertweets() {
     var startTime = 0;
     var tweets = document.getElementsByClassName("tweet");
     for (var i = 0; i < tweets.length; i++) {
-         var tweetContainer = tweets[i];
-         var tweet = tweets[i].innerHTML;
-         for (var j = 0; j < hide.length; j++){
-            if(tweetContainer.twivoHide == true){
-                continue;
-            }
-             if (tweet.contains(hide[j])) {
-             tweetContainer.twivoHide = true;
+       var tweet = tweets[i].innerHTML;
+        for (var j = 0; j < hide.length; j++){
+          if (tweet.contains(hide[j])) {
              var parent = $(tweets[i]).parent();
              kills.push(parent.clone());
              $(tweets[i]).css("background-color", "#A7D63A");
-             $(tweets[i]).css("color", "#A7D63A");
+              $(tweets[i]).css("color", "#A7D63A");
 
 
              }

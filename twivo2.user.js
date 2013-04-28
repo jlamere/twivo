@@ -19,6 +19,7 @@ var kills = new Array ();
 var button;
 var celeb = new Array();
 
+
 function klout(){
 celeb[0] = 574726427; // Dance Moms
 celeb[0].klout = 75998252051241835;
@@ -35,8 +36,6 @@ function filtertweets() {
     var tweets = document.getElementsByClassName("tweet");
     for (var i = 0; i < tweets.length; i++) {
          var tweetContainer = tweets[i];
-         var user = $(tweetContainer).attr("data-user-id");
-         alert(user);
          var tweet = tweets[i].innerHTML;
          for (var j = 0; j < hide.length; j++){
             if(tweetContainer.twivoHide == true){
@@ -46,13 +45,9 @@ function filtertweets() {
                  tweetContainer.twivoHide = true;
                  var parent = $(tweets[i]).parent();
                   kills.push(parent.clone());
-                  if(user != celeb[0]){
+                  
                  $(tweets[i]).css("background-color", "#A7D63A");
-                 } 
-                 else{
-                 $(tweets[i]).css("font-size", "30px");
-
-                 } 
+                
                  $(tweets[i]).css("color", "#A7D63A");
 
 
@@ -116,12 +111,18 @@ function clicked(){
  function play(){
      var ol = $("#stream-items-id");
      var count = 1;
+
      for (var i = kills.length-1; i >=0 ; i--) { 
+         var user = $(kills[i]).attr("data-user-id");
+          if(user = celeb[0]){
+             $(kills[i]).css("font-size", "25px");
+             }
          killIt(kills[i], ol, count*1000); 
          count += 2;
     }
 }
 function killIt(tweet, list, delay){
+     
      setTimeout(function(){
          tweet.css('background-color', '#FAD860');
           list.prepend(tweet);

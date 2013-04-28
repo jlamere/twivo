@@ -1,7 +1,7 @@
 twivo
 Jen Lamere
 04/26/13
-TVNext Hacckathon
+TVNext Hackathon
 =====
  I hate spoilers.
 

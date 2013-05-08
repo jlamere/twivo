@@ -10,7 +10,6 @@
 if (window.top != window.self)  //-- Don't run on frames or iframes.
     return;
 
-
 function scriptMain () {
 
 var hide = new Array();
@@ -20,23 +19,19 @@ var button;
 var celeb = new Array();
 
 
-function klout(){
-celeb[0] = 574726427; // Dance Moms
-celeb[0].klout = 75998252051241835;
-celeb[0].bucket = "80-89";
-}
 if (!String.prototype.contains) {
     String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
     };
 }
-
 function filtertweets() {
-    klout();
     var tweets = document.getElementsByClassName("tweet");
     for (var i = 0; i < tweets.length; i++) {
          var tweetContainer = tweets[i];
+
          var tweet = tweets[i].innerHTML;
+
+
          for (var j = 0; j < hide.length; j++){
             if(tweetContainer.twivoHide == true){
                 continue;
@@ -44,19 +39,12 @@ function filtertweets() {
              if (tweet.contains(hide[j])) {
                  tweetContainer.twivoHide = true;
                  var parent = $(tweets[i]).parent();
-                 var user = $(tweets[i]).attr("data-user-id");
-                  
-                 if(user == celeb[0]){
-                     $(tweets[i]).css("font-size", "25px");
-                      }
+                 var user = $(tweets[i]).attr("data-user-id"); 
                   kills.push(parent.clone());
                  
-                 $(tweets[i]).css("background-color", "#A7D63A");
+                 $(tweets[i]).css("background-color", "#787274");
                 
-                 $(tweets[i]).css("color", "#A7D63A");
-
-
-
+                 $(tweets[i]).css("color", "#787274");
              }
          }
      }  
@@ -72,7 +60,6 @@ function stopRecordMode(){
     clearTimeout(timeout);
     timeout = null;
 }
-
 function addTwivoButton() {
     
     var actions = $("#global-actions");
@@ -87,6 +74,19 @@ function addTwivoButton() {
     actions.append(litext);
     button.click(clicked);
 } 
+function tweetButton(user){
+    var actions = $(user);
+    var input = $("<input type='text' id='tag'>");
+    var litext = $("<li class = 'new'>");
+    var li = $("<li class='new'>");
+    button = $("<button id='record' class='btn btn-primary'>");
+    button.text('Record');
+    li.append(button);
+    litext.append(input);
+    actions.append(li);
+    actions.append(litext);
+    button.click(clicked);
+}
 function clicked(){
     if (button.text() == 'Record'){
          hide = [];
@@ -94,6 +94,13 @@ function clicked(){
          var splitter = tag.split(",");
         for(var i = 0; i < splitter.length; i++){
            hide.push(splitter[i]);
+            }
+        for(var i = 0; i < splitter.length; i++){
+           hide.push(splitter[i].toLowerCase());
+            }
+        for(var i = 0; i < splitter.length; i++){
+           
+            hide.push(splitter[i].replace(/ /g,""));
             }
          button.text('Stop');
          recordMode();
@@ -106,11 +113,8 @@ function clicked(){
          button.text('Record');
          hide = [];
          play();
-         kills = []
-
-
-    }
-    
+         kills = [];
+    }    
 } 
 
  function play(){
@@ -133,13 +137,11 @@ function killIt(tweet, list, delay){
      }
      addTwivoButton();    
  }
-
 window.addEventListener ("load", scriptMainLoader, false);
 
 function scriptMainLoader () {
    addJS_Node (null, null, scriptMain);
 }
-
 function addJS_Node (text, s_URL, funcToRun) {
     var D  = document;
     var scriptNode = D.createElement
@@ -153,7 +155,3 @@ function addJS_Node (text, s_URL, funcToRun) {
 D.documentElement;
     targ.appendChild (scriptNode);
 }
-
-
-
-

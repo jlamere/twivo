@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Twitter: Twivo App
+// @name        Twitter: Filter vine
 // @namespace   com.jennielamere.userscript.filtervine
 // @include     https://twitter.com/*
 // @include     http://twitter.com/*
@@ -17,6 +17,8 @@ var timeout = null;
 var kills = new Array ();
 var button;
 var celeb = new Array();
+
+
 if (!String.prototype.contains) {
     String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
@@ -72,7 +74,19 @@ function addTwivoButton() {
     actions.append(litext);
     button.click(clicked);
 } 
-addTwivoButton
+function tweetButton(user){
+    var actions = $(user);
+    var input = $("<input type='text' id='tag'>");
+    var litext = $("<li class = 'new'>");
+    var li = $("<li class='new'>");
+    button = $("<button id='record' class='btn btn-primary'>");
+    button.text('Record');
+    li.append(button);
+    litext.append(input);
+    actions.append(li);
+    actions.append(litext);
+    button.click(clicked);
+}
 function clicked(){
     if (button.text() == 'Record'){
          hide = [];
@@ -121,6 +135,7 @@ function killIt(tweet, list, delay){
       },delay);
 
      }
+     addTwivoButton();    
  }
 window.addEventListener ("load", scriptMainLoader, false);
 

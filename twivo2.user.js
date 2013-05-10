@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Twitter: Twivo
+// @name        Twitter: Twivo App
 // @namespace   com.jennielamere.userscript.filtervine
 // @include     https://twitter.com/*
 // @include     http://twitter.com/*
@@ -16,8 +16,7 @@ var hide = new Array();
 var timeout = null;
 var kills = new Array ();
 var button;
-
-
+var celeb = new Array();
 if (!String.prototype.contains) {
     String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
@@ -73,7 +72,7 @@ function addTwivoButton() {
     actions.append(litext);
     button.click(clicked);
 } 
-
+addTwivoButton
 function clicked(){
     if (button.text() == 'Record'){
          hide = [];

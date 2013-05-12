@@ -17,6 +17,7 @@ var timeout = null;
 var kills = new Array ();
 var button;
 var celeb = new Array();
+
 if (!String.prototype.contains) {
     String.prototype.contains = function(str, ignoreCase) {
         return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
@@ -26,10 +27,7 @@ function filtertweets() {
     var tweets = document.getElementsByClassName("tweet");
     for (var i = 0; i < tweets.length; i++) {
          var tweetContainer = tweets[i];
-
          var tweet = tweets[i].innerHTML;
-
-
          for (var j = 0; j < hide.length; j++){
             if(tweetContainer.twivoHide == true){
                 continue;
@@ -59,7 +57,6 @@ function stopRecordMode(){
     timeout = null;
 }
 function addTwivoButton() {
-    
     var actions = $("#global-actions");
     var input = $("<input type='text' id='tag'>");
     var litext = $("<li class = 'new'>");
@@ -113,8 +110,7 @@ function clicked(){
          count += 2;
     }
 }
-function killIt(tweet, list, delay){
-     
+function killIt(tweet, list, delay){     
      setTimeout(function(){
          tweet.css('background-color', '#FAD860');
           list.prepend(tweet);

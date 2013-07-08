@@ -16,7 +16,6 @@ var hide = new Array();
 var timeout = null;
 var kills = new Array ();
 var button;
-var celeb = new Array();
 
 if (!String.prototype.contains) {
     String.prototype.contains = function(str, ignoreCase) {
@@ -25,6 +24,7 @@ if (!String.prototype.contains) {
 }
 function filtertweets() {
     var tweets = document.getElementsByClassName("tweet");
+    var hashtag = document.getElementsByTagName("a");
     for (var i = 0; i < tweets.length; i++) {
          var tweetContainer = tweets[i];
          var tweet = tweets[i].innerHTML;
@@ -35,11 +35,8 @@ function filtertweets() {
              if (tweet.contains(hide[j])) {
                  tweetContainer.twivoHide = true;
                  var parent = $(tweets[i]).parent();
-                 var user = $(tweets[i]).attr("data-user-id"); 
                   kills.push(parent.clone());
-                 
-                 $(tweets[i]).css("background-color", "#787274");
-                
+                 $(tweets[i]).css("background-color", "#787274");               
                  $(tweets[i]).css("color", "#787274");
              }
          }
@@ -57,10 +54,10 @@ function stopRecordMode(){
     timeout = null;
 }
 function addTwivoButton() {
-    var actions = $("#global-actions");
+    var actions = $(".content-header");
     var input = $("<input type='text' id='tag'>");
-    var litext = $("<li class = 'new'>");
-    var li = $("<li class='new'>");
+    var litext = $("<twivo class = 'new'>");
+    var li = $("<twivo class='new'>");
     button = $("<button id='record' class='btn btn-primary'>");
     button.text('Record');
     li.append(button);

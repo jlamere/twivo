@@ -33,26 +33,37 @@ function scriptMain() {
                     continue;
                 }
                 if (tweet.contains(hide[j])) {
-                    timeDelay();
                     tweetContainer.twivoHide = true;
                     var parent = $(tweets[i]).parent();
                     kills.push(parent.clone());
+                    var timestamp = $(tweets[i]).find("._timestamp").text();
+                    timeify(timestamp);
                     $(tweets[i]).css("background-color", "#787274");
                     $(tweets[i]).css("color", "#787274");
-                    $('.twitter-hashtag').find("b").css("color", "#787274");
-                    $('.twitter-hashtag').find("s").css("color", "#787274");
+                    $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#787274");
+                    $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#787274");
 
                 }
             }
         }
     }
+    function timeify(timestamp){
+        if(timestamp.charAt(timestamp.length-1) == "m"){
+            timestamp = timestamp.substring(0, timestamp.length-1);
+            timestamp = timestamp * 60*1000;
+        }
+        else if(timestamp.charAt(timestamp.length-1) == "s"){
+            timestamp = timestamp.substring(0, timestamp.length-1);
+            timestamp = timestamp *1000;
+        }
+        else if(timestamp.charAt(timestamp.length-1) == "h"){
+            timestamp = timestamp.substring(0, timestamp.length-1);
+            timestamp = timestamp * 60*1000*60;
+        }
 
-    function timeDelay() {
-        var time = $("._timestamp").text();
-        var timeArray = time.split("(?<=[a-z])");
-
+        else{
+        }
     }
-
     function recordMode() {
         if (timeout == null) {
 
@@ -119,7 +130,7 @@ function scriptMain() {
 
     function killIt(tweet, list, delay) {
         setTimeout(function() {
-            tweet.css('background-color', '# ');
+            tweet.css('background-color', '#DAEDE2');
             list.prepend(tweet);
         }, delay);
 

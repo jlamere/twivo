@@ -3,7 +3,7 @@
 // @namespace   com.jennielamere.userscript.twivo
 // @include     https://twitter.com/*
 // @include     http://twitter.com/*
-// @version     1.0.0
+// @version     1.2.0
 // ==/UserScript==
 
 
@@ -16,6 +16,7 @@ function scriptMain() {
     var timeout = null;
     var kills = new Array();
     var button;
+    var tweets;
 
     if (!String.prototype.contains) {
         String.prototype.contains = function(str, ignoreCase) {
@@ -24,7 +25,7 @@ function scriptMain() {
     }
 
     function filtertweets() {
-        var tweets = document.getElementsByClassName("tweet");
+        tweets = document.getElementsByClassName("tweet");
         for (var i = 0; i < tweets.length; i++) {
             var tweetContainer = tweets[i];
             var tweet = tweets[i].innerHTML;
@@ -37,12 +38,12 @@ function scriptMain() {
                     var parent = $(tweets[i]).parent();
                     kills.push(parent.clone());
                     var timestamp = $(tweets[i]).find("._timestamp").text();
-                    timeify(timestamp);
+                    tweets[i].timestamp = timeify(timestamp);
+                    alert(tweets[i].timestamp);
                     $(tweets[i]).css("background-color", "#787274");
                     $(tweets[i]).css("color", "#787274");
                     $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#787274");
                     $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#787274");
-
                 }
             }
         }
@@ -63,6 +64,7 @@ function scriptMain() {
 
         else{
         }
+        return timestamp;
     }
     function recordMode() {
         if (timeout == null) {
@@ -121,10 +123,10 @@ function scriptMain() {
 
     function play() {
         var ol = $("#stream-items-id");
-        var count = 1;
         for (var i = kills.length - 1; i >= 0; i--) {
-            killIt(kills[i], ol, count * 1000);
-            count += 2;
+            var count = tweets[kills.length - 1].timestamp - tweets[i].timestamp;
+            alert(count)
+            killIt(kills[i], ol, count);
         }
     }
 

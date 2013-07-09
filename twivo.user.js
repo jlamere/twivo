@@ -17,6 +17,7 @@ function scriptMain() {
     var kills = new Array();
     var button;
     var tweets;
+    var timeDiff = new Array();
 
     if (!String.prototype.contains) {
         String.prototype.contains = function(str, ignoreCase) {
@@ -38,8 +39,8 @@ function scriptMain() {
                     var parent = $(tweets[i]).parent();
                     kills.push(parent.clone());
                     var timestamp = $(tweets[i]).find("._timestamp").text();
-                    tweets[i].timestamp = timeify(timestamp);
-                    alert(tweets[i].timestamp);
+                    timestamp = timeify(timestamp);
+                    timeDiff.push(timestamp);
                     $(tweets[i]).css("background-color", "#787274");
                     $(tweets[i]).css("color", "#787274");
                     $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#787274");
@@ -124,8 +125,7 @@ function scriptMain() {
     function play() {
         var ol = $("#stream-items-id");
         for (var i = kills.length - 1; i >= 0; i--) {
-            var count = tweets[kills.length - 1].timestamp - tweets[i].timestamp;
-            alert(count)
+            var count = timeDiff[kills.length - 1] - timeDiff[i];
             killIt(kills[i], ol, count);
         }
     }

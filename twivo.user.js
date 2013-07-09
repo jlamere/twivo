@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Twitter: Twivo App
-// @namespace   com.jennielamere.userscript.filtervine
+// @namespace   com.jennielamere.userscript.twivo
 // @include     https://twitter.com/*
 // @include     http://twitter.com/*
 // @version     1.0.0
@@ -24,7 +24,6 @@ if (!String.prototype.contains) {
 }
 function filtertweets() {
     var tweets = document.getElementsByClassName("tweet");
-    var hashtag = document.getElementsByTagName("a");
     for (var i = 0; i < tweets.length; i++) {
          var tweetContainer = tweets[i];
          var tweet = tweets[i].innerHTML;
@@ -38,11 +37,15 @@ function filtertweets() {
                   kills.push(parent.clone());
                  $(tweets[i]).css("background-color", "#787274");               
                  $(tweets[i]).css("color", "#787274");
+                 $('.twitter-hashtag').css("color", "#787274");
+
              }
          }
      }  
  }
+function timeDelay(){
 
+}
 function recordMode(){
     if(timeout == null){
 

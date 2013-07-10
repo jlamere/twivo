@@ -1,0 +1,13 @@
+@import "bourbon/bourbon";
+@import "grid-settings";
+@import "neat/neat";
+
+div.container {
+  @include outer-container;
+  $visual-grid: true;
+}
+
+div.center {
+  @include span-columns(6);
+  @include shift(2);
+}

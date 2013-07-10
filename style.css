@@ -1,0 +1,24 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+div.container {
+  *zoom: 1;
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  div.container:before, div.container:after {
+    content: " ";
+    display: table; }
+  div.container:after {
+    clear: both; }
+
+div.center {
+  display: block;
+  float: left;
+  margin-right: 2.5641%;
+  width: 58.97436%;
+  margin-left: 20.51282%; }
+  div.center:last-child {
+    margin-right: 0; }

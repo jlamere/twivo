@@ -3,7 +3,7 @@
 // @namespace   com.jennielamere.userscript.twivo
 // @include     https://twitter.com/*
 // @include     http://twitter.com/*
-// @version     1.2.1
+// @version     1.2.5
 // ==/UserScript==
 
 
@@ -39,8 +39,8 @@ function scriptMain() {
                     kills.push(parent.clone());
                     var timestamp = $(tweets[i]).find("._timestamp").text();
                     var actualTime = $(tweets[i]).find(".tweet-timestamp").attr("title");
-                    timestamp = timeify(timestamp, actualTime);
-                    timeDiff.push(timestamp);
+                    timeDiff.push(timeify(timestamp, actualTime));
+                    noRetweets(kills, timeDiff);
                     $(tweets[i]).css("background-color", "#787274");
                     $(tweets[i]).css("color", "#787274");
                     $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#787274");
@@ -49,23 +49,33 @@ function scriptMain() {
             }
         }
     }
+    
     function timeify(timestamp, actualTime){
         var timeAround = timestamp.charAt(timestamp.length-1)
         if(timeAround == "m" || timeAround == "h" || timeAround == "s"){
-            var hours = actualTime.substring(0,1) * 3600000;
-            var min = actualTime.substring(2,4) * 60000;
+            var breakSpot = actualTime.indexOf(":")
+            var space = actualTime.indexOf(" ");
+            var hours = actualTime.substring(0, breakSpot) * 3600000;
+            var min = actualTime.substring(breakSpot + 1,space) * 60000;
             actualTime = min + hours;
             return actualTime;
-
         }
-
         else{
             return null
         }
     }
+
+    function noRetweets(tweets, times){
+        for(var i = 0; i < tweets.length; i++){
+            if(times[i] == null){
+                tweets.splice(i, 1);
+            }
+        }
+
+    }
+    
     function recordMode() {
         if (timeout == null) {
-
             timeout = setInterval(filtertweets, 500);
         }
     }
@@ -89,7 +99,6 @@ function scriptMain() {
         button.click(clicked);
     }
     
-
     function clicked() {
         if (button.text() == 'Record') {
             hide = [];
@@ -104,6 +113,9 @@ function scriptMain() {
             for (var i = 0; i < splitter.length; i++) {
 
                 hide.push(splitter[i].replace(/ /g, ""));
+            }
+            for (var i = 0; i < splitter.length; i++) {
+                hide.push(splitter[i].charAt(0).toUpperCase() + splitter[i].slice(1));
             }
             button.text('Stop');
             recordMode();
@@ -121,10 +133,8 @@ function scriptMain() {
     function play() {
         var ol = $("#stream-items-id");
         for (var i = kills.length - 1; i >= 0; i--) {
-            var count = timeDiff[i] - timeDiff[kills.length - 1];
-            alert(count);
+            var count = Math.abs(timeDiff[i] - timeDiff[kills.length - 1]);
             killIt(kills[i], ol, count);
-
         }
     }
 
@@ -133,7 +143,6 @@ function scriptMain() {
             tweet.css('background-color', '#DAEDE2');
             list.prepend(tweet);
         }, delay);
-
     }
     addTwivoButton();
 }
@@ -150,9 +159,7 @@ function addJS_Node(text, s_URL, funcToRun) {
     if (text) scriptNode.textContent = text;
     if (s_URL) scriptNode.src = s_URL;
     if (funcToRun) scriptNode.textContent = '(' + funcToRun.toString() + ')()';
-
     var targ = D.getElementsByTagName('head')[0] || D.body ||
-
     D.documentElement;
     targ.appendChild(scriptNode);
 }

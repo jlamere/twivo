@@ -83,10 +83,10 @@ function scriptMain() {
                     var actualTime = $(tweets[i]).find(".tweet-timestamp").attr("title");
                     timeDiff.push(timeify(timestamp, actualTime));
                     noRetweets(kills, timeDiff);
-                    $(tweets[i]).css("background-color", "#95D1C5");
-                    $(tweets[i]).css("color", "#95D1C5");
-                    $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#95D1C5");
-                    $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#95D1C5");
+                    $(tweets[i]).css("background-color", "#2F3738");
+                    $(tweets[i]).css("color", "#2F3738");
+                    $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#2F3738");
+                    $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#2F3738");
                 }
             }
         }
@@ -124,7 +124,7 @@ function scriptMain() {
     }
         function killIt(tweet, list, delay) {
         setTimeout(function() {
-            tweet.css('background-color', '#E3D5B8');
+            tweet.css('background-color', '#D5FBFF');
             list.prepend(tweet);
         }, delay);
     }

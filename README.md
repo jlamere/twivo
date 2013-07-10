@@ -28,4 +28,4 @@ Things to remember:
 
 
 If you have any questions or comments, fees free to contact me at
-@jenniee_l or jennielamere@gmail.com 
+@imjen or jennielamere@gmail.com 

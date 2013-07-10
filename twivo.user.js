@@ -3,7 +3,7 @@
 // @namespace   com.jennielamere.userscript.twivo
 // @include     https://twitter.com/*
 // @include     http://twitter.com/*
-// @version     1.2.0
+// @version     1.2.1
 // ==/UserScript==
 
 
@@ -16,7 +16,6 @@ function scriptMain() {
     var timeout = null;
     var kills = new Array();
     var button;
-    var tweets;
     var timeDiff = new Array();
 
     if (!String.prototype.contains) {
@@ -26,7 +25,7 @@ function scriptMain() {
     }
 
     function filtertweets() {
-        tweets = document.getElementsByClassName("tweet");
+        var tweets = $(".js-stream-tweet");
         for (var i = 0; i < tweets.length; i++) {
             var tweetContainer = tweets[i];
             var tweet = tweets[i].innerHTML;
@@ -39,7 +38,8 @@ function scriptMain() {
                     var parent = $(tweets[i]).parent();
                     kills.push(parent.clone());
                     var timestamp = $(tweets[i]).find("._timestamp").text();
-                    timestamp = timeify(timestamp);
+                    var actualTime = $(tweets[i]).find(".tweet-timestamp").attr("title");
+                    timestamp = timeify(timestamp, actualTime);
                     timeDiff.push(timestamp);
                     $(tweets[i]).css("background-color", "#787274");
                     $(tweets[i]).css("color", "#787274");
@@ -49,23 +49,19 @@ function scriptMain() {
             }
         }
     }
-    function timeify(timestamp){
-        if(timestamp.charAt(timestamp.length-1) == "m"){
-            timestamp = timestamp.substring(0, timestamp.length-1);
-            timestamp = timestamp * 60*1000;
-        }
-        else if(timestamp.charAt(timestamp.length-1) == "s"){
-            timestamp = timestamp.substring(0, timestamp.length-1);
-            timestamp = timestamp *1000;
-        }
-        else if(timestamp.charAt(timestamp.length-1) == "h"){
-            timestamp = timestamp.substring(0, timestamp.length-1);
-            timestamp = timestamp * 60*1000*60;
+    function timeify(timestamp, actualTime){
+        var timeAround = timestamp.charAt(timestamp.length-1)
+        if(timeAround == "m" || timeAround == "h" || timeAround == "s"){
+            var hours = actualTime.substring(0,1) * 3600000;
+            var min = actualTime.substring(2,4) * 60000;
+            actualTime = min + hours;
+            return actualTime;
+
         }
 
         else{
+            return null
         }
-        return timestamp;
     }
     function recordMode() {
         if (timeout == null) {
@@ -125,8 +121,10 @@ function scriptMain() {
     function play() {
         var ol = $("#stream-items-id");
         for (var i = kills.length - 1; i >= 0; i--) {
-            var count = timeDiff[kills.length - 1] - timeDiff[i];
+            var count = timeDiff[i] - timeDiff[kills.length - 1];
+            alert(count);
             killIt(kills[i], ol, count);
+
         }
     }
 

@@ -1,7 +1,12 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
+
+body {
+  background-color: #5B5B5B;
+  font-family: 'Open Sans', sans-serif; }
 
 div.container {
   *zoom: 1;
@@ -19,6 +24,25 @@ div.center {
   float: left;
   margin-right: 2.5641%;
   width: 58.97436%;
-  margin-left: 20.51282%; }
+  margin-left: 20.51282%;
+  background-color: #E7E7E7;
+  border-style: solid;
+  border-width: 0px;
+  border-color: #FB5F55; }
   div.center:last-child {
     margin-right: 0; }
+  div.center div.left {
+    display: block;
+    float: left;
+    margin-right: 4.34783%;
+    width: 47.82609%;
+    font-size: 14px;
+    padding-left: 20px; }
+    div.center div.left:last-child {
+      margin-right: 0; }
+
+h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 128px;
+  color: #F45C4D; }

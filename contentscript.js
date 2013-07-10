@@ -8,7 +8,7 @@ function scriptMain() {
     var kills = new Array();
     var button;
     var timeDiff = new Array();
-
+    
     if (!String.prototype.contains) {
         String.prototype.contains = function(str, ignoreCase) {
             return (ignoreCase ? this.toUpperCase() : this).indexOf(ignoreCase ? str.toUpperCase() : str) >= 0;
@@ -43,14 +43,12 @@ function scriptMain() {
 
                 hide.push(splitter[i].replace(/ /g, ""));
             }
-            button.text('Stop');
+            button.text('Play');
             recordMode();
         }
-         else if (button.text() == 'Stop') {
-            button.text('Play');
-            stopRecordMode();
-        } 
+
         else if (button.text() == 'Play') {
+            stopRecordMode();
             button.text('Record');
             hide = [];
             play();

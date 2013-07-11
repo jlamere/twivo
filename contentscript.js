@@ -81,6 +81,7 @@ function scriptMain() {
                     $(tweets[i]).css("color", "#5b5b5b");
                     $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#5b5b5b");
                     $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#5b5b5b");
+
                 }
             }
         }
@@ -93,9 +94,11 @@ function scriptMain() {
             var hours = actualTime.substring(0, breakSpot) * 3600000;
             var min = actualTime.substring(breakSpot + 1,space) * 60000;
             actualTime = min + hours;
-            return actualTime;
+           return actualTime;
         }
         else{
+            alert("else" + kills.length);
+
             return null
         }
     }
@@ -104,10 +107,10 @@ function scriptMain() {
             if(times[i] == null){
                 tweets.splice(i, 1);
             }
-            if(times[tweets.length - 1] -times[i])
+            if(times[tweets.length - 1] -times[i]){
                 tweets.splice(i, 1);
+            }
         }
-
     }
     function play() {
         var ol = $("#stream-items-id");
@@ -122,7 +125,6 @@ function scriptMain() {
             list.prepend(tweet);
         }, delay);
     }
-
 }
 window.addEventListener("load", scriptMainLoader, false);
 

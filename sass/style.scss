@@ -4,7 +4,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 body {
-	background-color: #E7E7E7;
+	background-color: #FFFFFF;
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -15,7 +15,7 @@ div.container {
 div.center {
   @include span-columns(6);
   @include shift(2);
-  background-color: #E7E7E7;
+  background-color: #FFFFFF;
   div.row {
   	@include span-columns(6 of 6);
   	margin-top: 20px;

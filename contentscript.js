@@ -63,6 +63,7 @@ function scriptMain() {
     function filtertweets() {
         var tweets = $(".js-stream-tweet");
         for (var i = 0; i < tweets.length; i++) {
+            var time = Date.now();
             var tweetContainer = tweets[i];
             var tweet = tweets[i].innerHTML.toLowerCase();
             for (var j = 0; j < hide.length; j++) {
@@ -75,7 +76,7 @@ function scriptMain() {
                     kills.push(parent.clone());
                     var timestamp = $(tweets[i]).find("._timestamp").text();
                     var actualTime = $(tweets[i]).find(".tweet-timestamp").attr("title");
-                    timeDiff.push(timeify(timestamp, actualTime));
+                    timeDiff.push(timeify(timestamp, actualTime, time));
                     noRetweets(kills, timeDiff);
                     $(tweets[i]).css("background-color", "#5b5b5b");
                     $(tweets[i]).css("color", "#5b5b5b");
@@ -85,7 +86,7 @@ function scriptMain() {
             }
         }
     }    
-    function timeify(timestamp, actualTime){
+    function timeify(timestamp, actualTime, time){
         var timeAround = timestamp.charAt(timestamp.length-1)
         if(timeAround == "m" || timeAround == "h" || timeAround == "s"){
             var breakSpot = actualTime.indexOf(":")
@@ -93,6 +94,7 @@ function scriptMain() {
             var hours = actualTime.substring(0, breakSpot) * 3600000;
             var min = actualTime.substring(breakSpot + 1,space) * 60000;
             actualTime = min + hours;
+            actualTime =  time - actualTime;
            return actualTime;
         }
         else{
@@ -100,30 +102,20 @@ function scriptMain() {
         }
     }
     function noRetweets(tweets, times){
-        alert("1" + tweets.length);
         for(var i = 0; i < tweets.length; i++){
             if(times[i] == null){
-                alert("2" + tweets.length);
                 tweets.splice(i, 1);
-                alert("3" + tweets.length);
-
             }
-            if(times[tweets.length - 1] -times[i] > 0){
-                alert(times[tweets.length - 1] -times[i]);
-                alert("4" + tweets.length);
+            if(times[tweets.length - 1] -times[i] < 0){
                 tweets.splice(i, 1);
-            alert("5" + tweets.length);
-
             }
         }
-        alert("6" + tweets.length);
 
     }
     function play() {
         var ol = $("#stream-items-id");
         for (var i = kills.length - 1; i >= 0; i--) {
-            var count = timeDiff[i] -timeDiff[kills.length-1];
-            alert(count);
+            var count = timeDiff[kills.length-1] -timeDiff[i];
             killIt(kills[i], ol, count);
         }
     }

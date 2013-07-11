@@ -48,7 +48,7 @@ hr {
 div.footer {
 	@include span-columns(6);
 	@include shift(2);
-	margin-top: 40px;
+	margin-top: 20px;
 	font-size: 11px;
 }
 

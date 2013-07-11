@@ -1,9 +1,8 @@
 {
 	"manifest_version": 2,
-
 	"name": "Twivo",
 	"description": "Tivo for Twitter - prevent spoilers and save tweets for later",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"homepage_url": "https://github.com/jlamere/twivo/blob/master/README.md",
    	"content_scripts": [
    	{

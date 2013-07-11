@@ -31,26 +31,20 @@ function scriptMain() {
     function clicked() {
         if (button.text() == 'Record') {
             hide = [];
-            var tag = $("#tag").val();
+            var tag = $("#tag").val().toLowerCase();
             var splitter = tag.split(",");
             for (var i = 0; i < splitter.length; i++) {
                 hide.push(splitter[i]);
             }
             for (var i = 0; i < splitter.length; i++) {
-                hide.push(splitter[i].toLowerCase());
-            }
-            for (var i = 0; i < splitter.length; i++) {
-
                 hide.push(splitter[i].replace(/ /g, ""));
             }
-            button.text('Stop');
+            button.text('Play');
             recordMode();
         }
-         else if (button.text() == 'Stop') {
-            button.text('Play');
-            stopRecordMode();
-        } 
+
         else if (button.text() == 'Play') {
+            stopRecordMode();
             button.text('Record');
             hide = [];
             play();
@@ -70,7 +64,7 @@ function scriptMain() {
         var tweets = $(".js-stream-tweet");
         for (var i = 0; i < tweets.length; i++) {
             var tweetContainer = tweets[i];
-            var tweet = tweets[i].innerHTML;
+            var tweet = tweets[i].innerHTML.toLowerCase();
             for (var j = 0; j < hide.length; j++) {
                 if (tweetContainer.twivoHide == true) {
                     continue;
@@ -83,10 +77,10 @@ function scriptMain() {
                     var actualTime = $(tweets[i]).find(".tweet-timestamp").attr("title");
                     timeDiff.push(timeify(timestamp, actualTime));
                     noRetweets(kills, timeDiff);
-                    $(tweets[i]).css("background-color", "#95D1C5");
-                    $(tweets[i]).css("color", "#95D1C5");
-                    $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#95D1C5");
-                    $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#95D1C5");
+                    $(tweets[i]).css("background-color", "#5b5b5b");
+                    $(tweets[i]).css("color", "#5b5b5b");
+                    $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#5b5b5b");
+                    $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#5b5b5b");
                 }
             }
         }
@@ -124,7 +118,7 @@ function scriptMain() {
     }
         function killIt(tweet, list, delay) {
         setTimeout(function() {
-            tweet.css('background-color', '#E3D5B8');
+            tweet.css('background-color', '#F2836B');
             list.prepend(tweet);
         }, delay);
     }

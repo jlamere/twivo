@@ -81,7 +81,6 @@ function scriptMain() {
                     $(tweets[i]).css("color", "#5b5b5b");
                     $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#5b5b5b");
                     $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#5b5b5b");
-
                 }
             }
         }
@@ -97,25 +96,34 @@ function scriptMain() {
            return actualTime;
         }
         else{
-            alert("else" + kills.length);
-
             return null
         }
     }
     function noRetweets(tweets, times){
+        alert("1" + tweets.length);
         for(var i = 0; i < tweets.length; i++){
             if(times[i] == null){
+                alert("2" + tweets.length);
                 tweets.splice(i, 1);
+                alert("3" + tweets.length);
+
             }
-            if(times[tweets.length - 1] -times[i]){
+            if(times[tweets.length - 1] -times[i] > 0){
+                alert(times[tweets.length - 1] -times[i]);
+                alert("4" + tweets.length);
                 tweets.splice(i, 1);
+            alert("5" + tweets.length);
+
             }
         }
+        alert("6" + tweets.length);
+
     }
     function play() {
         var ol = $("#stream-items-id");
         for (var i = kills.length - 1; i >= 0; i--) {
-            var count = timeDiff[kills.length - 1] -timeDiff[i];
+            var count = timeDiff[i] -timeDiff[kills.length-1];
+            alert(count);
             killIt(kills[i], ol, count);
         }
     }

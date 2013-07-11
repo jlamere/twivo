@@ -1,4 +1,3 @@
-
 if (window.top != window.self) //-- Don't run on frames or iframes.
     return;
 function scriptMain() {
@@ -49,6 +48,7 @@ function scriptMain() {
             hide = [];
             play();
             kills = [];
+            timeDiff = [];
         }
     }
     function recordMode() {
@@ -115,7 +115,10 @@ function scriptMain() {
     function play() {
         var ol = $("#stream-items-id");
         for (var i = kills.length - 1; i >= 0; i--) {
+            alert("1" +  timeDiff[kills.length-1]);
+            alert("2" + timeDiff[i]);
             var count = timeDiff[kills.length-1] -timeDiff[i];
+            alert(count/1000);
             killIt(kills[i], ol, count);
         }
     }

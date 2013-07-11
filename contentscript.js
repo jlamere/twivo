@@ -1,4 +1,3 @@
-
 if (window.top != window.self) //-- Don't run on frames or iframes.
     return;
 function scriptMain() {
@@ -49,6 +48,7 @@ function scriptMain() {
             hide = [];
             play();
             kills = [];
+            timeDiff = [];
         }
     }
     function recordMode() {
@@ -62,6 +62,7 @@ function scriptMain() {
     }
     function filtertweets() {
         var tweets = $(".js-stream-tweet");
+        var count = 0;
         for (var i = 0; i < tweets.length; i++) {
             var time = Date.now();
             var tweetContainer = tweets[i];
@@ -82,8 +83,13 @@ function scriptMain() {
                     $(tweets[i]).css("color", "#5b5b5b");
                     $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#5b5b5b");
                     $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#5b5b5b");
+                    count ++;
                 }
             }
+        }
+        if(tweets.length == count){
+            alert("Please enter a more specific term");
+            location.reload();
         }
     }    
     function timeify(timestamp, actualTime, time){

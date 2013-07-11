@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Twivo",
   "description": "Tivo for Twitter - prevent spoilers and save tweets for later",
-  "version": "2.0.6",
+  "version": "2.0.7",
    "icons": { "16": "icon16.png",
            "48": "icon48.png",
           "128": "icon128.png" },

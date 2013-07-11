@@ -62,7 +62,9 @@ img {
   max-height: 100%; }
 
 hr {
-  border-bottom: 1px solid #5B5B5B; }
+  border: 0;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #ffffff; }
 
 div.footer {
   display: block;

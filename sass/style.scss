@@ -4,7 +4,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 body {
-	background-color: #5B5B5B;
+	background-color: #E7E7E7;
 	font-family: 'Open Sans', sans-serif;
 }
 
@@ -16,19 +16,47 @@ div.center {
   @include span-columns(6);
   @include shift(2);
   background-color: #E7E7E7;
-  div.left {
-    @include span-columns(3 of 6);
-    font-size: 14px;
-    padding-left: 20px;
+  div.row {
+  	@include span-columns(6 of 6);
+  	margin-top: 20px;
+  	margin-bottom: 20px;
+  	  div.left {
+	    @include span-columns(3 of 6);
+	    font-size: 16px;
+	    color: #FB5F55;
+	  }
+	  div.right {
+	    @include span-columns(3 of 6);
+	    font-size: 16px;
+	  }
   }
-  border-style: solid;
-  border-width: 0px;
-  border-color: #FB5F55;
+}
+
+img {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+hr {
+  border-bottom: 1px solid #5B5B5B;
+}
+
+div.footer {
+	@include span-columns(6);
+	@include shift(2);
+	margin-top: 40px;
+	font-size: 11px;
 }
 
 h1 {
 	margin-top: 0px;
 	margin-bottom: 0px;
 	font-size: 128px;
+	color: #F45C4D;
+}
+
+h3 {
+	margin-top: 0px;
+	margin-bottom: 0px;
 	color: #F45C4D;
 }

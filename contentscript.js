@@ -62,6 +62,7 @@ function scriptMain() {
     }
     function filtertweets() {
         var tweets = $(".js-stream-tweet");
+        var count = 0;
         for (var i = 0; i < tweets.length; i++) {
             var time = Date.now();
             var tweetContainer = tweets[i];
@@ -82,8 +83,13 @@ function scriptMain() {
                     $(tweets[i]).css("color", "#5b5b5b");
                     $(tweets[i]).find('.twitter-hashtag').find("b").css("color", "#5b5b5b");
                     $(tweets[i]).find('.twitter-hashtag').find("s").css("color", "#5b5b5b");
+                    count ++;
                 }
             }
+        }
+        if(tweets.length == count){
+            alert("Please enter a more specific term");
+            location.reload();
         }
     }    
     function timeify(timestamp, actualTime, time){
@@ -115,10 +121,7 @@ function scriptMain() {
     function play() {
         var ol = $("#stream-items-id");
         for (var i = kills.length - 1; i >= 0; i--) {
-            alert("1" +  timeDiff[kills.length-1]);
-            alert("2" + timeDiff[i]);
             var count = timeDiff[kills.length-1] -timeDiff[i];
-            alert(count/1000);
             killIt(kills[i], ol, count);
         }
     }

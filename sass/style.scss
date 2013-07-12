@@ -30,7 +30,7 @@ div.center {
 	@include shift(2);
 	position: relative;
 	top: -175px;
-	margin-bottom: -175px;
+	margin-bottom: -100px;
 	background-color: #FFFFFF;
 	div.centerText{
 		@include span-columns(6 of 6);
@@ -40,11 +40,11 @@ div.center {
 		margin-top: 20px;
 		margin-bottom: 20px;
 		div.left {
-			@include span-columns(3 of 6);
+			@include span-columns(2 of 6);
 			color: #FB5F55;
 		}
 		div.right {
-			@include span-columns(3 of 6);
+			@include span-columns(4 of 6);
 		}
 	}
 
@@ -89,6 +89,15 @@ h4 {
 	top: 5px;
 }
 
+.buttonHeader {
+	position: relative;
+	top: 13px;
+}
+
+.buttonText {
+	display: inline;
+}
+
 h3 {
 	display: inline;
 	margin-top: 0px;
@@ -101,3 +110,35 @@ a:visited {color:#FB5F55;}
 a:hover {color:#FB5F55;} 
 
 p{text-align:justify;}
+
+.button {
+   border-top: 1px solid #0084cb;
+   background: #006dba;
+   background: -webkit-gradient(linear, left top, left bottom, from(#0084cb), to(#006dba));
+   background: -webkit-linear-gradient(top, #0084cb, #006dba);
+   background: -moz-linear-gradient(top, #0084cb, #006dba);
+   background: -ms-linear-gradient(top, #0084cb, #006dba);
+   background: -o-linear-gradient(top, #0084cb, #006dba);
+   padding: 8.5px 17px;
+   -webkit-border-radius: 9px;
+   //-moz-border-radius: 9px;
+   border-radius: 9px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 15px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-top-color: #28597a;
+   background: #28597a;
+   color: #ccc;
+   }
+.button:active {
+   border-top-color: #1b435e;
+   background: #1b435e;
+   }

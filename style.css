@@ -43,7 +43,7 @@ div.center {
   margin-left: 21.66667%;
   position: relative;
   top: -175px;
-  margin-bottom: -175px;
+  margin-bottom: -100px;
   background-color: #FFFFFF; }
   div.center:last-child {
     margin-right: 0; }
@@ -67,7 +67,7 @@ div.center {
       display: block;
       float: left;
       margin-right: 14.70588%;
-      width: 42.64706%;
+      width: 23.52941%;
       color: #FB5F55; }
       div.center div.row div.left:last-child {
         margin-right: 0; }
@@ -75,7 +75,7 @@ div.center {
       display: block;
       float: left;
       margin-right: 14.70588%;
-      width: 42.64706%; }
+      width: 61.76471%; }
       div.center div.row div.right:last-child {
         margin-right: 0; }
 
@@ -112,6 +112,13 @@ h4 {
   position: relative;
   top: 5px; }
 
+.buttonHeader {
+  position: relative;
+  top: 13px; }
+
+.buttonText {
+  display: inline; }
+
 h3 {
   display: inline;
   margin-top: 0px;
@@ -129,3 +136,33 @@ a:hover {
 
 p {
   text-align: justify; }
+
+.button {
+  border-top: 1px solid #0084cb;
+  background: #006dba;
+  background: -webkit-gradient(linear, left top, left bottom, from(#0084cb), to(#006dba));
+  background: -webkit-linear-gradient(top, #0084cb, #006dba);
+  background: -moz-linear-gradient(top, #0084cb, #006dba);
+  background: -ms-linear-gradient(top, #0084cb, #006dba);
+  background: -o-linear-gradient(top, #0084cb, #006dba);
+  padding: 8.5px 17px;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  -webkit-box-shadow: black 0 1px 0;
+  -moz-box-shadow: black 0 1px 0;
+  box-shadow: black 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  color: white;
+  font-size: 15px;
+  font-family: Helvetica, Arial, Sans-Serif;
+  text-decoration: none;
+  vertical-align: middle; }
+
+.button:hover {
+  border-top-color: #28597a;
+  background: #28597a;
+  color: #ccc; }
+
+.button:active {
+  border-top-color: #1b435e;
+  background: #1b435e; }

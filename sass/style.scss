@@ -17,6 +17,12 @@ div.top {
 	height: 250px;
 }
 
+div.bot {
+	display: block;
+	background-color: #032032;
+	height: 60px;
+}
+
 div.headerImage{
 		@include span-columns(10);
 		position: relative;

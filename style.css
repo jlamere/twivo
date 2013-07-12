@@ -23,6 +23,11 @@ div.top {
   background-color: #F0F0F0;
   height: 250px; }
 
+div.bot {
+  display: block;
+  background-color: #032032;
+  height: 60px; }
+
 div.headerImage {
   display: block;
   float: left;

@@ -26,7 +26,10 @@ div.top {
 div.bot {
   display: block;
   background-color: #032032;
-  height: 60px; }
+  height: 60px;
+  color: #FFFFFF;
+  padding-top: 20px;
+  font-size: 12px; }
 
 div.headerImage {
   display: block;

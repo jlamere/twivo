@@ -19,12 +19,36 @@ div.container {
   div.container:after {
     clear: both; }
 
+div.top {
+  display: block;
+  float: left;
+  margin-right: 2.5641%;
+  width: 100%;
+  background-color: #F0F0F0;
+  height: 250px; }
+  div.top:last-child {
+    margin-right: 0; }
+
+div.headerImage {
+  display: block;
+  float: left;
+  margin-right: 2.5641%;
+  width: 100%;
+  position: relative;
+  max-height: 100%;
+  max-width: 100%;
+  top: -200px; }
+  div.headerImage:last-child {
+    margin-right: 0; }
+
 div.center {
   display: block;
   float: left;
   margin-right: 2.5641%;
   width: 58.97436%;
   margin-left: 20.51282%;
+  position: relative;
+  top: -175px;
   background-color: #FFFFFF; }
   div.center:last-child {
     margin-right: 0; }
@@ -59,7 +83,10 @@ img {
   margin-top: 20px;
   margin-bottom: 20px;
   max-width: 100%;
-  max-height: 100%; }
+  max-height: 100%;
+  -webkit-box-shadow: -3px 4px 30px #323232;
+  -moz-box-shadow: -3px 4px 30px #323232;
+  box-shadow: -3px 4px 30px #323232; }
 
 hr {
   border: 0;

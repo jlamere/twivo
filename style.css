@@ -1,12 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Cabin);
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
 body {
-  background-color: #FFFFFF;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Cabin', sans-serif; }
 
 div.container {
   *zoom: 1;
@@ -22,7 +21,7 @@ div.container {
 div.top {
   display: block;
   float: left;
-  margin-right: 2.5641%;
+  margin-right: 8.33333%;
   width: 100%;
   background-color: #F0F0F0;
   height: 250px; }
@@ -32,7 +31,7 @@ div.top {
 div.headerImage {
   display: block;
   float: left;
-  margin-right: 2.5641%;
+  margin-right: 8.33333%;
   width: 100%;
   position: relative;
   max-height: 100%;
@@ -44,18 +43,25 @@ div.headerImage {
 div.center {
   display: block;
   float: left;
-  margin-right: 2.5641%;
-  width: 58.97436%;
-  margin-left: 20.51282%;
+  margin-right: 8.33333%;
+  width: 56.66667%;
+  margin-left: 21.66667%;
   position: relative;
   top: -175px;
   background-color: #FFFFFF; }
   div.center:last-child {
     margin-right: 0; }
+  div.center div.centerText {
+    display: block;
+    float: left;
+    margin-right: 14.70588%;
+    width: 100%; }
+    div.center div.centerText:last-child {
+      margin-right: 0; }
   div.center div.row {
     display: block;
     float: left;
-    margin-right: 4.34783%;
+    margin-right: 14.70588%;
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px; }
@@ -64,22 +70,20 @@ div.center {
     div.center div.row div.left {
       display: block;
       float: left;
-      margin-right: 4.34783%;
-      width: 47.82609%;
-      font-size: 16px;
+      margin-right: 14.70588%;
+      width: 42.64706%;
       color: #FB5F55; }
       div.center div.row div.left:last-child {
         margin-right: 0; }
     div.center div.row div.right {
       display: block;
       float: left;
-      margin-right: 4.34783%;
-      width: 47.82609%;
-      font-size: 16px; }
+      margin-right: 14.70588%;
+      width: 42.64706%; }
       div.center div.row div.right:last-child {
         margin-right: 0; }
 
-img {
+.bigHeader {
   margin-top: 20px;
   margin-bottom: 20px;
   max-width: 100%;
@@ -87,6 +91,11 @@ img {
   -webkit-box-shadow: -3px 4px 30px #323232;
   -moz-box-shadow: -3px 4px 30px #323232;
   box-shadow: -3px 4px 30px #323232; }
+
+.circle {
+  position: relative;
+  top: 7px;
+  display: inline; }
 
 hr {
   border: 0;
@@ -96,24 +105,36 @@ hr {
 div.footer {
   display: block;
   float: left;
-  margin-right: 2.5641%;
-  width: 58.97436%;
-  margin-left: 20.51282%;
+  margin-right: 8.33333%;
+  width: 56.66667%;
+  margin-left: 21.66667%;
+  position: relative;
+  top: -175px;
+  height: 0px;
   margin-top: 20px;
   font-size: 11px; }
   div.footer:last-child {
     margin-right: 0; }
 
-h1 {
+h2 {
   margin-top: 0px;
   margin-bottom: 0px;
-  font-size: 128px;
-  color: #F45C4D; }
+  font-size: 14px;
+  color: #0062AD; }
+
+h4 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 13px;
+  color: #919191;
+  position: relative;
+  top: 10px; }
 
 h3 {
+  display: inline;
   margin-top: 0px;
   margin-bottom: 0px;
-  color: #F45C4D; }
+  color: #0062AD; }
 
 a:link {
   color: #FB5F55; }

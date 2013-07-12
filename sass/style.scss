@@ -1,11 +1,10 @@
 @import "bourbon/bourbon";
 @import "grid-settings";
 @import "neat/neat";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Cabin);
 
 body {
-	background-color: #FFFFFF;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Cabin', sans-serif;
 }
 
 div.container {
@@ -32,24 +31,25 @@ div.center {
 	position: relative;
 	top: -175px;
 	background-color: #FFFFFF;
+	div.centerText{
+		@include span-columns(6 of 6);
+	}
 	div.row {
 		@include span-columns(6 of 6);
 		margin-top: 20px;
 		margin-bottom: 20px;
 		div.left {
 			@include span-columns(3 of 6);
-			font-size: 16px;
 			color: #FB5F55;
 		}
 		div.right {
 			@include span-columns(3 of 6);
-			font-size: 16px;
 		}
 	}
 
 }
 
-img {
+.bigHeader {
 	margin-top: 20px;
 	margin-bottom: 20px;
 	max-width: 100%;
@@ -57,6 +57,12 @@ img {
 	-webkit-box-shadow: -3px 4px 30px rgba(50, 50, 50, 1);
 	-moz-box-shadow:    -3px 4px 30px rgba(50, 50, 50, 1);
 	box-shadow:         -3px 4px 30px rgba(50, 50, 50, 1);
+}
+
+.circle {
+	position: relative;
+	top: 7px;
+	display: inline;
 }
 
 hr {
@@ -68,21 +74,34 @@ hr {
 div.footer {
 	@include span-columns(6);
 	@include shift(2);
+	position: relative;
+	top: -175px;
+	height: 0px;
 	margin-top: 20px;
 	font-size: 11px;
 }
 
-h1 {
+h2 {
 	margin-top: 0px;
 	margin-bottom: 0px;
-	font-size: 128px;
-	color: #F45C4D;
+	font-size: 14px;
+	color: #0062AD;
+}
+
+h4 {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: 13px;
+	color: #919191;
+	position: relative;
+	top: 10px;
 }
 
 h3 {
+	display: inline;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	color: #F45C4D;
+	color: #0062AD;
 }
 
 a:link {color:#FB5F55;}      

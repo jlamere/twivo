@@ -14,6 +14,7 @@ function scriptMain() {
         };
     }
     addTwivoButton();
+
     function addTwivoButton() {
         var actions = $(".content-header");
         var input = $("<input type='text' id='tag'>");
@@ -116,7 +117,6 @@ function scriptMain() {
                 tweets.splice(i, 1);
             }
         }
-
     }
     function play() {
         var ol = $("#stream-items-id");
@@ -127,7 +127,7 @@ function scriptMain() {
     }
         function killIt(tweet, list, delay) {
         setTimeout(function() {
-            tweet.css('background-color', '#F2836B');
+            tweet.css('background-color', '#BDE9FF');
             list.prepend(tweet);
         }, delay);
     }

@@ -117,7 +117,6 @@ function scriptMain() {
                 tweets.splice(i, 1);
             }
         }
-
     }
     function play() {
         var ol = $("#stream-items-id");

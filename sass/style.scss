@@ -12,7 +12,7 @@ div.container {
 }
 
 div.top {
-	@include span-columns(10);
+	display: block;
 	background-color: #F0F0F0;
 	height: 250px;
 }
@@ -30,6 +30,7 @@ div.center {
 	@include shift(2);
 	position: relative;
 	top: -175px;
+	margin-bottom: -175px;
 	background-color: #FFFFFF;
 	div.centerText{
 		@include span-columns(6 of 6);
@@ -71,15 +72,6 @@ hr {
 	border-bottom: 1px solid #ffffff;
 }
 
-div.footer {
-	@include span-columns(6);
-	@include shift(2);
-	position: relative;
-	top: -175px;
-	height: 0px;
-	margin-top: 20px;
-	font-size: 11px;
-}
 
 h2 {
 	margin-top: 0px;
@@ -94,7 +86,7 @@ h4 {
 	font-size: 13px;
 	color: #919191;
 	position: relative;
-	top: 10px;
+	top: 5px;
 }
 
 h3 {

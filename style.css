@@ -20,13 +20,8 @@ div.container {
 
 div.top {
   display: block;
-  float: left;
-  margin-right: 8.33333%;
-  width: 100%;
   background-color: #F0F0F0;
   height: 250px; }
-  div.top:last-child {
-    margin-right: 0; }
 
 div.headerImage {
   display: block;
@@ -48,6 +43,7 @@ div.center {
   margin-left: 21.66667%;
   position: relative;
   top: -175px;
+  margin-bottom: -175px;
   background-color: #FFFFFF; }
   div.center:last-child {
     margin-right: 0; }
@@ -102,20 +98,6 @@ hr {
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #ffffff; }
 
-div.footer {
-  display: block;
-  float: left;
-  margin-right: 8.33333%;
-  width: 56.66667%;
-  margin-left: 21.66667%;
-  position: relative;
-  top: -175px;
-  height: 0px;
-  margin-top: 20px;
-  font-size: 11px; }
-  div.footer:last-child {
-    margin-right: 0; }
-
 h2 {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -128,7 +110,7 @@ h4 {
   font-size: 13px;
   color: #919191;
   position: relative;
-  top: 10px; }
+  top: 5px; }
 
 h3 {
   display: inline;
